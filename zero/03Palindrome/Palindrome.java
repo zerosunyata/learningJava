@@ -13,9 +13,6 @@ public class Palindrome{
 		if((str.charAt(a)) != (str.charAt(b)))
 			return false;
 		// more than two: check chars between a and b
-		if(a < b - 1)
-			return isPalindrome(str, a + 1, b - 1);
-		return true;
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
