@@ -1,44 +1,46 @@
+package palindrome;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Palindrome{
+public class Palindrome {
 
-	public static boolean isPalindrome(String str, int a, int b) {
-		// one char: if there is only one character
-		if(a == b)
+	public static boolean isEven(String str) {
+		if (str.length() % 2 == 0)
 			return true;
-		// two chars: not match
-		if((str.charAt(a)) != (str.charAt(b)))
-			return false;
-		// more than two: check chars between a and b
+		return false;
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
+	@SuppressWarnings("resource")
+	public static void main(String args[]) {
+		Scanner a = new Scanner(System.in);
+		boolean pal = false;
 
-		Scanner keyboard = new Scanner(System.in);
-
-		String choice = "y";
-
-		boolean done = false;
-		do {
-			System.out.println("Please enter a palindrome or exit to terminate the program: ");
-			if (keyboard.hasNext()) {
-				String str = keyboard.next();
-				if (!str.equals("exit")) {
-					int n = str.length();
-					if (isPalindrome(str, 0, n - 1)) {
-						System.out.println("The word "+str+" IS a Palindrome.");
-					} else {
-						System.out.println("The word "+str+" IS NOT a Palindrome.");
+		if (a.hasNext()) {
+			String palindrome = a.next();
+			if (isEven(palindrome)) {
+				int last = palindrome.length() - 1;
+				for (int i = 0; i < palindrome.length() / 2; i++) {
+					if (palindrome.charAt(i) != palindrome.charAt(last - i)) {
+						System.out.println(palindrome + " -- is not a palindrome");
+						pal = true;
+						break;
 					}
-				} else {
-					done = true;
 				}
+				if (!pal)
+					System.out.println(palindrome + " -- is a regular palindrome");
 			}
-
-		} while (!done);
-
+			else {
+				int last = palindrome.length() -1;
+				for (int i = 0; i < last / 2; i++) {
+					if (palindrome.charAt(i) != palindrome.charAt(last - i)) {
+						System.out.println(palindrome + " -- is not a palindrome");
+						pal = true;
+						break;
+					}
+				}
+				if (!pal)
+					System.out.println(palindrome + " -- is a regular palindrome");
+			}
+		}
 	}
 }
