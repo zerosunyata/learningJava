@@ -24,5 +24,10 @@ public class GaussSummation {
 //		System.out.println("f(1) = " + f(1));
 //		System.out.println("f(2) = " + f(2));
 		System.out.println("f(3) = " + f(3));
+		
+		int sum = 0;
+		for (int i =1; i <=3; i++) {
+			sum += i
+		}
 	}
 }
